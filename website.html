@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Civil Engineering Consultancy</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #1b5e20; /* Dark green */
+      color: white;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #66bb6a; /* Lighter green */
+    }
+
+    /* Language Selector Styles */
+    .language-selector {
+      color: white;
+    }
+    .language-selector select {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Main Content Styles */
+    main {
+      margin-top: 80px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 400px;
+      background: linear-gradient(
+                  rgba(27, 94, 32, 0.8),
+                  rgba(27, 94, 32, 0.8)
+                ),
+                url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      max-width: 800px;
+      line-height: 1.3;
+    }
+
+    /* Services Section */
+    .services {
+      margin: 4rem 0;
+      padding: 4rem 0;
+      background-color: #f9f9f9;
+    }
+
+    .services h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #1b5e20;
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      padding: 0 2rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: #1b5e20;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      color: #1b5e20;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .service-card p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+
+    .service-features li {
+      padding: 0.5rem 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .service-features li i {
+      color: #1b5e20;
+      margin-right: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .service-cta {
+      color: #1b5e20;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .service-cta:hover {
+      color: #66bb6a;
+    }
+
+    .service-cta i {
+      margin-left: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .service-cta:hover i {
+      transform: translateX(5px);
+    }
+
+    /* About Section */
+    .about {
+      margin: 4rem 0;
+      line-height: 1.6;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .about h2 {
+      color: #1b5e20;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      margin: 4rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .contact-form {
+      background-color: #f5f5f5;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    .contact-info {
+      padding: 2rem;
+      background-color: #1b5e20;
+      color: white;
+      border-radius: 8px;
+    }
+
+    .contact-info h3 {
+      margin-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input,
+    textarea {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #1b5e20;
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #66bb6a;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .contact {
+        grid-template-columns: 1fr;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Elite Engineering</div>
+      <div class="nav-links">
+        <a href="#services" id="navServices">Services</a>
+        <a href="#about" id="navAbout">About</a>
+        <a href="#contact" id="navContact">Contact</a>
+      </div>
+      <div class="language-selector">
+        <select id="languageSelect">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 id="heroTitle">Precision Engineering Solutions for Complex Challenges</h1>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <h2 id="servicesTitle">Specialized Engineering Services</h2>
+      <div class="services-grid">
+        <!-- Project Management -->
+        <div class="service-card">
+          <i class="fas fa-tasks service-icon"></i>
+          <h3 id="servicePMTitle">Project Management</h3>
+          <p id="servicePMDesc">Comprehensive oversight from concept to completion ensuring quality and compliance</p>
+          <ul class="service-features">
+            <li id="servicePMFeature1"><i class="fas fa-check"></i>Schedule optimization</li>
+            <li id="servicePMFeature2"><i class="fas fa-check"></i>Cost control systems</li>
+            <li id="servicePMFeature3"><i class="fas fa-check"></i>Stakeholder coordination</li>
+          </ul>
+          <a href="#contact" class="service-cta" id="servicePMCTA">
+            Start Project <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Interior Design -->
+        <div class="service-card">
+          <i class="fas fa-couch service-icon"></i>
+          <h3 id="serviceIDTitle">Interior Design</h3>
+          <p id="serviceIDDesc">Functional and aesthetic space planning for commercial &amp; residential projects</p>
+          <ul class="service-features">
+            <li id="serviceIDFeature1"><i class="fas fa-check"></i>3D renderings</li>
+            <li id="serviceIDFeature2"><i class="fas fa-check"></i>Material selection</li>
+            <li id="serviceIDFeature3"><i class="fas fa-check"></i>Lighting design</li>
+          </ul>
+          <a href="#contact" class="service-cta" id="serviceIDCTA">
+            Design Consultation <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Technical Blueprints -->
+        <div class="service-card">
+          <i class="fas fa-drafting-compass service-icon"></i>
+          <h3 id="serviceTBTitle">Technical Blueprints</h3>
+          <p id="serviceTBDesc">Precision drafting services meeting international building standards</p>
+          <ul class="service-features">
+            <li id="serviceTBFeature1"><i class="fas fa-check"></i>CAD/BIM modeling</li>
+            <li id="serviceTBFeature2"><i class="fas fa-check"></i>Structural detailing</li>
+            <li id="serviceTBFeature3"><i class="fas fa-check"></i>MEP integration</li>
+          </ul>
+          <a href="#contact" class="service-cta" id="serviceTBCTA">
+            Request Drafting <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Project Revisions -->
+        <div class="service-card">
+          <i class="fas fa-file-edit service-icon"></i>
+          <h3 id="servicePRTitle">Project Revisions</h3>
+          <p id="servicePRDesc">Efficient modification of existing plans and specifications</p>
+          <ul class="service-features">
+            <li id="servicePRFeature1"><i class="fas fa-check"></i>Change order management</li>
+            <li id="servicePRFeature2"><i class="fas fa-check"></i>Code compliance updates</li>
+            <li id="servicePRFeature3"><i class="fas fa-check"></i>As-built documentation</li>
+          </ul>
+          <a href="#contact" class="service-cta" id="servicePRCTA">
+            Modify Plans <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Equipment Lists -->
+        <div class="service-card">
+          <i class="fas fa-toolbox service-icon"></i>
+          <h3 id="serviceELTitle">Equipment Lists</h3>
+          <p id="serviceELDesc">Comprehensive inventory management and procurement planning</p>
+          <ul class="service-features">
+            <li id="serviceELFeature1"><i class="fas fa-check"></i>Technical specifications</li>
+            <li id="serviceELFeature2"><i class="fas fa-check"></i>Vendor coordination</li>
+            <li id="serviceELFeature3"><i class="fas fa-check"></i>Maintenance scheduling</li>
+          </ul>
+          <a href="#contact" class="service-cta" id="serviceELCTA">
+            Get Inventory List <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h2 id="aboutTitle">About Us</h2>
+      <p>
+        With over 20 years of experience in civil engineering consultancy, Elite Engineering delivers exceptional technical expertise and innovative solutions. Our team of licensed professionals is committed to excellence in every project, ensuring compliance, efficiency, and sustainability.
+      </p>
+      <br />
+      <p>
+        We specialize in managing complex infrastructure projects while maintaining strict adherence to safety standards and budgetary requirements. Our client-focused approach ensures personalized service tailored to your specific needs.
+      </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="contact-form">
+        <h2 id="contactTitle">Contact Us</h2>
+        <form id="contactForm">
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <textarea rows="5" placeholder="Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+      <div class="contact-info">
+        <h3 id="contactInfoTitle">Contact Information</h3>
+        <br />
+        <p id="contactInfoPhone">📞 +1 (555) 123-4567</p>
+        <p id="contactInfoEmail">✉️ contact@eliteengineering.com</p>
+        <br />
+        <p id="contactInfoAddress">
+          🏢 123 Engineering Plaza<br />
+          Suite 450<br />
+          New York, NY 10001
+        </p>
+        <br />
+        <p id="contactInfoHours">
+          Office Hours:<br />
+          Mon-Fri: 9AM - 6PM EST
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Enhanced service card interactions
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseover', () => {
+        card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.12)';
+      });
+      card.addEventListener('mouseout', () => {
+        card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
+      });
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Translation object for English and Spanish
+    const translations = {
+      en: {
+        hero: "Precision Engineering Solutions for Complex Challenges",
+        services: "Specialized Engineering Services",
+        about: "About Us",
+        contact: "Contact Us",
+        navServices: "Services",
+        navAbout: "About",
+        navContact: "Contact",
+        servicePM: {
+          title: "Project Management",
+          desc: "Comprehensive oversight from concept to completion ensuring quality and compliance",
+          feature1: "Schedule optimization",
+          feature2: "Cost control systems",
+          feature3: "Stakeholder coordination",
+          cta: "Start Project"
+        },
+        serviceID: {
+          title: "Interior Design",
+          desc: "Functional and aesthetic space planning for commercial & residential projects",
+          feature1: "3D renderings",
+          feature2: "Material selection",
+          feature3: "Lighting design",
+          cta: "Design Consultation"
+        },
+        serviceTB: {
+          title: "Technical Blueprints",
+          desc: "Precision drafting services meeting international building standards",
+          feature1: "CAD/BIM modeling",
+          feature2: "Structural detailing",
+          feature3: "MEP integration",
+          cta: "Request Drafting"
+        },
+        servicePR: {
+          title: "Project Revisions",
+          desc: "Efficient modification of existing plans and specifications",
+          feature1: "Change order management",
+          feature2: "Code compliance updates",
+          feature3: "As-built documentation",
+          cta: "Modify Plans"
+        },
+        serviceEL: {
+          title: "Equipment Lists",
+          desc: "Comprehensive inventory management and procurement planning",
+          feature1: "Technical specifications",
+          feature2: "Vendor coordination",
+          feature3: "Maintenance scheduling",
+          cta: "Get Inventory List"
+        },
+        contactInfo: {
+          title: "Contact Information",
+          phone: "📞 +1 (555) 123-4567",
+          email: "✉️ contact@eliteengineering.com",
+          address: "🏢 123 Engineering Plaza<br>Suite 450<br>New York, NY 10001",
+          hours: "Office Hours:<br>Mon-Fri: 9AM - 6PM EST"
+        }
+      },
+      es: {
+        hero: "Soluciones de Ingeniería de Precisión para Desafíos Complejos",
+        services: "Servicios de Ingeniería Especializados",
+        about: "Sobre Nosotros",
+        contact: "Contáctanos",
+        navServices: "Servicios",
+        navAbout: "Sobre Nosotros",
+        navContact: "Contacto",
+        servicePM: {
+          title: "Gestión de Proyectos",
+          desc: "Supervisión integral desde el concepto hasta la finalización garantizando calidad y cumplimiento",
+          feature1: "Optimización de cronogramas",
+          feature2: "Sistemas de control de costos",
+          feature3: "Coordinación de partes interesadas",
+          cta: "Iniciar Proyecto"
+        },
+        serviceID: {
+          title: "Diseño de Interiores",
+          desc: "Planificación espacial funcional y estética para proyectos comerciales y residenciales",
+          feature1: "Renderizados 3D",
+          feature2: "Selección de materiales",
+          feature3: "Diseño de iluminación",
+          cta: "Consulta de Diseño"
+        },
+        serviceTB: {
+          title: "Planos Técnicos",
+          desc: "Servicios de dibujo de precisión que cumplen con estándares internacionales de construcción",
+          feature1: "Modelado CAD/BIM",
+          feature2: "Detalles estructurales",
+          feature3: "Integración MEP",
+          cta: "Solicitar Dibujo"
+        },
+        servicePR: {
+          title: "Revisiones de Proyectos",
+          desc: "Modificación eficiente de planes y especificaciones existentes",
+          feature1: "Gestión de órdenes de cambio",
+          feature2: "Actualizaciones de cumplimiento de códigos",
+          feature3: "Documentación as-built",
+          cta: "Modificar Planes"
+        },
+        serviceEL: {
+          title: "Listas de Equipos",
+          desc: "Gestión integral de inventario y planificación de adquisiciones",
+          feature1: "Especificaciones técnicas",
+          feature2: "Coordinación con proveedores",
+          feature3: "Programación de mantenimiento",
+          cta: "Obtener Lista de Inventario"
+        },
+        contactInfo: {
+          title: "Información de Contacto",
+          phone: "📞 +1 (555) 123-4567",
+          email: "✉️ contact@eliteengineering.com",
+          address: "🏢 123 Engineering Plaza<br>Suite 450<br>Nueva York, NY 10001",
+          hours: "Horario de Atención:<br>Lun-Vie: 9AM - 6PM EST"
+        }
+      }
+    };
+
+    // Function to update language based on selection
+    document.getElementById("languageSelect").addEventListener("change", function () {
+      const lang = this.value;
+      
+      // Update header and hero
+      document.getElementById("heroTitle").innerText = translations[lang].hero;
+      document.getElementById("servicesTitle").innerText = translations[lang].services;
+      document.getElementById("aboutTitle").innerText = translations[lang].about;
+      document.getElementById("contactTitle").innerText = translations[lang].contact;
+      document.getElementById("navServices").innerText = translations[lang].navServices;
+      document.getElementById("navAbout").innerText = translations[lang].navAbout;
+      document.getElementById("navContact").innerText = translations[lang].navContact;
+
+      // Update Project Management card
+      document.getElementById("servicePMTitle").innerText = translations[lang].servicePM.title;
+      document.getElementById("servicePMDesc").innerText = translations[lang].servicePM.desc;
+      document.getElementById("servicePMFeature1").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].servicePM.feature1;
+      document.getElementById("servicePMFeature2").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].servicePM.feature2;
+      document.getElementById("servicePMFeature3").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].servicePM.feature3;
+      document.getElementById("servicePMCTA").childNodes[0].nodeValue = translations[lang].servicePM.cta + ' ';
+
+      // Update Interior Design card
+      document.getElementById("serviceIDTitle").innerText = translations[lang].serviceID.title;
+      document.getElementById("serviceIDDesc").innerText = translations[lang].serviceID.desc;
+      document.getElementById("serviceIDFeature1").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceID.feature1;
+      document.getElementById("serviceIDFeature2").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceID.feature2;
+      document.getElementById("serviceIDFeature3").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceID.feature3;
+      document.getElementById("serviceIDCTA").childNodes[0].nodeValue = translations[lang].serviceID.cta + ' ';
+
+      // Update Technical Blueprints card
+      document.getElementById("serviceTBTitle").innerText = translations[lang].serviceTB.title;
+      document.getElementById("serviceTBDesc").innerText = translations[lang].serviceTB.desc;
+      document.getElementById("serviceTBFeature1").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceTB.feature1;
+      document.getElementById("serviceTBFeature2").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceTB.feature2;
+      document.getElementById("serviceTBFeature3").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceTB.feature3;
+      document.getElementById("serviceTBCTA").childNodes[0].nodeValue = translations[lang].serviceTB.cta + ' ';
+
+      // Update Project Revisions card
+      document.getElementById("servicePRTitle").innerText = translations[lang].servicePR.title;
+      document.getElementById("servicePRDesc").innerText = translations[lang].servicePR.desc;
+      document.getElementById("servicePRFeature1").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].servicePR.feature1;
+      document.getElementById("servicePRFeature2").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].servicePR.feature2;
+      document.getElementById("servicePRFeature3").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].servicePR.feature3;
+      document.getElementById("servicePRCTA").childNodes[0].nodeValue = translations[lang].servicePR.cta + ' ';
+
+      // Update Equipment Lists card
+      document.getElementById("serviceELTitle").innerText = translations[lang].serviceEL.title;
+      document.getElementById("serviceELDesc").innerText = translations[lang].serviceEL.desc;
+      document.getElementById("serviceELFeature1").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceEL.feature1;
+      document.getElementById("serviceELFeature2").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceEL.feature2;
+      document.getElementById("serviceELFeature3").innerHTML = '<i class="fas fa-check"></i>' + translations[lang].serviceEL.feature3;
+      document.getElementById("serviceELCTA").childNodes[0].nodeValue = translations[lang].serviceEL.cta + ' ';
+
+      // Update Contact Information
+      document.getElementById("contactInfoTitle").innerText = translations[lang].contactInfo.title;
+      document.getElementById("contactInfoPhone").innerHTML = translations[lang].contactInfo.phone;
+      document.getElementById("contactInfoEmail").innerHTML = translations[lang].contactInfo.email;
+      document.getElementById("contactInfoAddress").innerHTML = translations[lang].contactInfo.address;
+      document.getElementById("contactInfoHours").innerHTML = translations[lang].contactInfo.hours;
+    });
+
+    // Form submission
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thank you for your message! We will respond within 24 hours.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
